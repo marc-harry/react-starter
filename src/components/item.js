@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 
 class ItemComponent extends Component {
+    constructor() {
+        super();
+        this.state = {
+            message: ''
+        };
+    }
+
+    componentWillMount() {
+        fetch("/api/message")
+            .then(resp => resp.json())
+            .then(json => this.setState({ message: json }));
+    }
+
     render() {
         let { number } = this.props;
         if (!number) {
@@ -9,7 +22,7 @@ class ItemComponent extends Component {
 
         return (
             <div>
-            Item here! {number}
+            Item here! {number} - {this.state.message}
             </div>
         );
     }

@@ -23,7 +23,7 @@ class CounterComponent extends Component {
         return (
             <div>
                 <Counter 
-                    increase={this.props.actions.increaseCount} 
+                    increase={this.props.actions.increaseCount}
                     decrease={this.props.actions.decreaseCount}
                     count={this.props.counter} />
                 
@@ -46,7 +46,12 @@ class CounterComponent extends Component {
     }
 }
 
-const Counter = (props) => (
+const counterProps = {
+    decrease: Function, 
+    increase: Function, 
+    count: Number
+}
+const Counter = (props = counterProps) => (
     <div>            
         <Button color="primary" onClick={props.decrease}>Decrease</Button>
         &nbsp;
